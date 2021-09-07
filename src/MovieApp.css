@@ -1,0 +1,28 @@
+.search-movie {
+    text-align:center;
+    height:40vh;
+    background: #141e30; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #141e30, #243b55); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #141e30, #243b55);
+}
+
+.search-movie > * {
+    position:relative;
+    top:15px;
+}
+
+
+.search-movie > div > h1 {
+    font-family: 'Allison', cursive;
+    font-size: 60px;
+    color:white;
+}
+
+.hide { 
+    display:none;
+    visibility: hidden;
+}
+
+.forms-adding>* { 
+    margin-top: 10px
+}

@@ -1,0 +1,17 @@
+button{ 
+    border:none;
+    background:white;
+    color:purple;
+    font-size:34px;
+}
+
+.counter-container{
+    text-align: center;
+    display:flex;
+    justify-content: center;
+}
+
+.movie-list >img  { 
+    width: 320px;
+    height: 320px;
+}
