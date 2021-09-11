@@ -1,70 +1,35 @@
-import './Counter.css'
-import React,{useState, useEffect} from 'react'
 
-const movieList = [{
-    id:1,
-    name: 'Citizen Kane',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/c/c0/Citizen_Kane_poster%2C_1941_%28Style_B%2C_unrestored%29.jpg',
-    rating: 4
-},{
-    id:2,
-    name: 'Interstellar',
-    image: 'https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg',
-    rating: 5
-},{
-    id:3,
-    name: 'Stalker',
-    image: 'https://i.pinimg.com/originals/22/ae/b9/22aeb9bbdc9f6954b69cc69ca36a81de.png',
-    rating: 5
-}]
+// import {connect} from 'react-redux'
+import React  from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {increment ,decrement} from './redux/actions/action-types'
+//CREATE YOUR STATE 
+//IT IS A FUNCTION INDEED
+//AND THE ENGLISH IS CLEAR, WE TRANSFORM A STATE INTO A PROPS BY 
+//GETTING THE STATE FROM REDUX
+// const mapStateToProps = (state) => {
+//     return { count: state.count}
+// }
 
+// //A DISPATCH IS THE ONE RESPONSIBLE FOR 'DISPATCHING' the types
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         increment: ()=> dispatch(increment()), 
+//         decrement: ()=>dispatch(decrement())
+//     }
+// }
 
 const Counter = () => {
-    // const [counter, setCounter] = useState(0)
-    const [moviesFilter, setMoviesFilter] = useState([])
-    const [movieSearch, setMovieSearch] = useState('')
-
-    // const increment = () => {
-    //     setCounter(counter+1)
-    // }
-
-    // const decrement = () => {
-    //     setCounter(counter-1)
-    // }
-
-    useEffect(()=>{
-        setMoviesFilter(movieList.filter(movie => (movie.name.includes(movieSearch)), movieList))
-    },[movieSearch])
-    // CE CONCENTRE UNIQUEMENT SUR LES CHANGEMENTS 
-    // SI J'UTILISE UN EVENT, ONCLICK, ONCHANGE, USEEFFECT DOIT CIBLER LE CHANGEMENT
-    //re-rendering 
-    //()=>{}
-
-
+    const dispatch = useDispatch()
+    const count = useSelector(state => state.count)
     return (
-        <div className='counter-container'>
-            {/* <button onClick={decrement}>-</button>
-            <h1>{counter}</h1>
-            <button onClick={increment}>+</button> */}
-
-
-            <div className="movies-container">
-                <input type='text' onChange={(e)=> setMovieSearch(e.target.value)}/>
-
-                <div className="movie-list">
-                        {moviesFilter.map( movie => (
-                            <>
-                            <img src={movie.image}></img>
-                            <h1>{movie.name}</h1>
-                            <h3>Rating: {movie.rating}</h3>
-                            </>
-                        ))}
-                </div>
-            </div>
-
-            
+        <div>
+            <button onClick={()=> dispatch(decrement())}>Appauvrir MBAYE</button>
+                {count}
+            <button onClick={()=>dispatch(increment())}>ENRICHIR MBAYE</button>
         </div>
     )
 }
 
+// export default connect(mapStateToProps,mapDispatchToProps)(Counter)
 export default Counter
